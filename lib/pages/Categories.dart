@@ -33,6 +33,7 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
     AppState appState = Provider.of<AppState>(context, listen: false);
     appState.getEmpresas(appState.giro.id);
     super.initState();
+    print(appState.giro);
    // print("idCategoria: ${widget.idCategory}");
     //fetchCategorias(widget.idCategory);
   }
@@ -58,7 +59,7 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
           SafeArea(child: _containerAvatar()),
           SizedBox(height: 50,),
           Container(
-            margin: EdgeInsets.only(top: 195),
+            margin: EdgeInsets.only(top: 170),
             child:  lista(context),
           )          // Expanded(
           //             child: Positioned(
@@ -81,7 +82,7 @@ Widget _containerAvatar() {
         _returnMenu(),
         //_avatar(),
         SizedBox(
-          height: 20,
+          height: 3,
         ),
         _titleWidget(context),
         // Expanded(
@@ -94,12 +95,13 @@ Widget _containerAvatar() {
   }
    Widget _titleWidget(BuildContext context) {
     AppState appState = Provider.of<AppState>(context);
+    
     return Container(
       width: 160,
       child: Text(
-        "${appState.empresa.giro}",
+        "${appState.giro.descripcion}",
         style: TextStyle(
-            fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey[800]),
+            fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         textAlign: TextAlign.center,
       ),
     );

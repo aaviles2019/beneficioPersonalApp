@@ -159,9 +159,12 @@ class _DetailState extends State<Detail> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _avatar() {
+       AppState appState = Provider.of<AppState>(context);
+    String url = "http://10.13.123.54:8080/media/";
     final size = MediaQuery.of(context).size;
     print('height - ${size.height}');
     print('width - ${size.width}');
+    print("URL" +"$url${appState.empresa.imagenEmpresa}");
     return Container(
       // margin: EdgeInsets.symmetric(vertical: 0.2),
       height: 150,
@@ -170,10 +173,23 @@ class _DetailState extends State<Detail> with AutomaticKeepAliveClientMixin {
         borderRadius: BorderRadius.circular(100),
         color: Colors.white,
       ),
-      child: Image.asset(
-        "assets/descuentos.png",
-        scale: 4,
-      ),
+      child: appState.empresa.imagenEmpresa == null ? _imagenDescuentos() :  _logoEmpresa(),
+    );
+  }
+
+  Widget _imagenDescuentos() {
+    return Image.asset(
+       "assets/descuentos.png" ,
+       scale: 4,
+    );
+  }
+
+  Widget _logoEmpresa() {
+    AppState appState = Provider.of<AppState>(context);
+    String url = "http://10.13.123.54:8080/media/";
+    return Image.network(
+       "$url${appState.empresa.imagenEmpresa}" ,
+       scale: 4,
     );
   }
 

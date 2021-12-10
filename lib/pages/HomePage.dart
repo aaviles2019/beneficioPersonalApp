@@ -11,21 +11,23 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
-  final NetworkUtil _util = new NetworkUtil();
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  // final NetworkUtil _util = new NetworkUtil();
   List<Giros> listaGiros = [];
   @override
   void initState() {
     super.initState();
-    fetchCategorias();
+    // fetchCategorias();
   }
 
-  void fetchCategorias() async {
-    listaGiros = await _util.getGiros();
-  }
+  // void fetchCategorias() async {
+  //   listaGiros = await _util.getGiros();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    listaGiros = Provider.of<AppState>(context, listen: false).giros;
     return Scaffold(
         body: Stack(
       children: <Widget>[
@@ -71,10 +73,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
         margin: EdgeInsets.symmetric(horizontal: 33.0),
         alignment: FractionalOffset.centerRight,
         // padding: EdgeInsets.all(0.0),
-        child: Image(
-          image: AssetImage("assets/descuentos.png"),
-          height: 100.0,
-          width: 92.0,
+        child: Hero(
+          tag: 'imageHero',
+          child: Image(
+            image: AssetImage("assets/descuentos.png"),
+            height: 100.0,
+            width: 92.0,
+          ),
         ),
       );
 
@@ -142,7 +147,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
               childAspectRatio: 1.40),
           itemCount: listaGiros.length,
           itemBuilder: (context, index) {
-            return _buttonWidget(listaGiros[index].descripcion,listaGiros[index].id, index, );
+            return _buttonWidget(
+              index,
+              listaGiros[index]
+            );
           },
         ),
       );
@@ -196,13 +204,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
   //   return myButtons;
   // }
 
-  Widget _buttonWidget(title, int id, int index) {
-    final appState= Provider.of<AppState>(context, listen: false);
+  Widget _buttonWidget(int index, Giros giro) {
+    final appState = Provider.of<AppState>(context, listen: false);
     return InkWell(
         onTap: () {
           appState.empresas = [];
-          Navigator.pushNamed(context, 'Categories', arguments: { id: id});
-          appState.giro.id = id;
+          Navigator.pushNamed(context, 'Categories', arguments: {"id": giro.id});
+          appState.giro = giro;
         },
         child: Ink(
           child: Container(
@@ -220,7 +228,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                     size: 40.0,
                   ),
                   Text(
-                    title,
+                    giro.descripcion,
                     style: TextStyle(color: Colors.white, fontSize: 11),
                   )
                 ]),
@@ -228,51 +236,51 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
         ));
   }
 
-  IconData iconos(index){
+  IconData iconos(index) {
     switch (index) {
       case 1:
         return Icons.directions_bike;
-      break;
+        break;
       case 2:
         return Icons.pool;
-      
-      break;
+
+        break;
       case 3:
         return Icons.add_business;
-      
-      break;
+
+        break;
       case 4:
         return Icons.local_grocery_store;
-      
-      break;
+
+        break;
       case 5:
         return Icons.school;
-      
-      break;
+
+        break;
       case 6:
         return Icons.remove_red_eye;
-      
-      break;
+
+        break;
       case 7:
         return Icons.hotel;
-      
-      break;
+
+        break;
       case 8:
         return Icons.flight;
-      
-      break;
+
+        break;
       case 9:
         return Icons.face_retouching_natural;
-      
-      break;
+
+        break;
       case 10:
         return Icons.local_hospital;
-      
-      break;
+
+        break;
       case 11:
         return null;
-      
-      break;
+
+        break;
       default:
     }
     return Icons.attractions;

@@ -4,6 +4,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:promociones/pages/Categories.dart';
 import 'package:promociones/pages/Detail.dart';
 import 'package:promociones/pages/HomePage.dart';
+import 'package:promociones/pages/inicio/landing.dart';
 import 'package:promociones/shared/PreferenciasUsuario.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
 
         }
       },
-      home: HomePage(),
+      home: Bienvenida(),
     );
   }
 }

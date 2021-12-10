@@ -13,6 +13,7 @@ class ItemEmpresa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var heightCaja = MediaQuery.of(context).size.height - 545;
      return InkWell(
         onTap: () {
           final empresaState = Provider.of<AppState>(context, listen: false);
@@ -24,10 +25,10 @@ class ItemEmpresa extends StatelessWidget {
           padding: EdgeInsets.all(7.0),
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 140,
+            height: heightCaja,
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.white,
+                color: Colors.white10,
               ),
               borderRadius: BorderRadius.circular(8),
             ),
@@ -42,6 +43,18 @@ class ItemEmpresa extends StatelessWidget {
         ));
 
         
+  }
+
+  Widget _titleWidget(BuildContext context) {
+    return Container(
+      width: 160,
+      child: Text(
+        "${empresa.giro}",
+        style: TextStyle(
+            fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 
   Widget _imageEnterprise(BuildContext context) => Container(
@@ -72,7 +85,7 @@ class ItemEmpresa extends StatelessWidget {
                      "${empresa.nombreEmpresa}",
                       style: TextStyle(
                           color: Colors.blue[900],
-                          fontSize: 20,
+                          fontSize: 17,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold),
                     ),
@@ -100,3 +113,5 @@ class ItemEmpresa extends StatelessWidget {
 }
 
 }
+
+  
