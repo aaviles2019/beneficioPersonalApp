@@ -1,6 +1,4 @@
 
-
-import 'package:promociones/src/models/Empresa.dart';
 import 'package:promociones/src/models/giros.dart';
 import 'package:promociones/src/util/Strings.dart';
 import 'api_base_helper.dart';

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:promociones/src/models/Empresa.dart';
 import 'package:promociones/src/providers/app_state.dart';
@@ -34,6 +33,7 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
     appState.getEmpresas(appState.giro.id);
     super.initState();
     print(appState.giro);
+    
    // print("idCategoria: ${widget.idCategory}");
     //fetchCategorias(widget.idCategory);
   }
@@ -43,13 +43,13 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
   //   listaEmpresa = await _util.getEmpresa(id);
   // }
 
+  
 
   @override
 
   Widget build(BuildContext context) {
 
-    AppState appState = Provider.of<AppState>(context);
-
+    Provider.of<AppState>(context, listen: false).empresas = listaEmpresa;
     return Scaffold(
   
         backgroundColor: Colors.white,
@@ -60,8 +60,9 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
           SizedBox(height: 50,),
           Container(
             margin: EdgeInsets.only(top: 170),
-            child:  lista(context),
-          )          // Expanded(
+            child: listaEmpresa.length > 0 ?   lista(context): _validarEmpresas()
+            //child:  lista(context),
+          ),         // Expanded(
           //             child: Positioned(
           //     child: lista(context),
           //     top: 21,
@@ -75,6 +76,19 @@ class _CategoriesState extends State<Categories> with AutomaticKeepAliveClientMi
       );
     
   }
+  
+  Widget _validarEmpresas() {
+    
+    return AlertDialog(
+       content: Text('¡Por el momento no contamos con establecimientos!',
+        style: TextStyle(color: Colors.blue[900], fontSize: 17, fontWeight: FontWeight.bold )),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(9.0))),
+        );
+    
+  }
+
+
 
 Widget _containerAvatar() {
     return Column(
@@ -82,7 +96,7 @@ Widget _containerAvatar() {
         _returnMenu(),
         //_avatar(),
         SizedBox(
-          height: 3,
+          height: 2,
         ),
         _titleWidget(context),
         // Expanded(
@@ -161,7 +175,8 @@ Widget _containerAvatar() {
     AppState appState = Provider.of<AppState>(context);
         //fetchCategorias(appState.giro.id);
     return ListaEmpresas( appState.empresas );
-   
+
+  }
 
   // return MaterialApp(
   //     debugShowCheckedModeBanner: false,
@@ -226,7 +241,7 @@ Widget _containerAvatar() {
   //       ],
   //     )),
   //   );
-  }
+  //}
 
    @override
   bool get wantKeepAlive => true;

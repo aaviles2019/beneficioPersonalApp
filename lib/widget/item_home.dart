@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promociones/src/models/giros.dart';
-import 'package:promociones/src/providers/app_state.dart';
-import 'package:provider/provider.dart';
+//import 'package:promociones/src/providers/app_state.dart';
+//import 'package:provider/provider.dart';
 
 class ItemHome extends StatelessWidget {
   final Giros giro;

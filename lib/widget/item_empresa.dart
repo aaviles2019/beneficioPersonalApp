@@ -1,6 +1,4 @@
 
-
-
 import 'package:flutter/material.dart';
 import 'package:promociones/src/models/Empresa.dart';
 import 'package:promociones/src/providers/app_state.dart';
@@ -45,17 +43,17 @@ class ItemEmpresa extends StatelessWidget {
         
   }
 
-  Widget _titleWidget(BuildContext context) {
-    return Container(
-      width: 160,
-      child: Text(
-        "${empresa.giro}",
-        style: TextStyle(
-            fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
+  // Widget _titleWidget(BuildContext context) {
+  //   return Container(
+  //     width: 160,
+  //     child: Text(
+  //       "${empresa.giro}",
+  //       style: TextStyle(
+  //           fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+  //       textAlign: TextAlign.center,
+  //     ),
+  //   );
+  // }
 
   Widget _imageEnterprise(BuildContext context) => Container(
         margin: EdgeInsets.symmetric(horizontal: 14.0),

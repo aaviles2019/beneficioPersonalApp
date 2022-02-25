@@ -1,4 +1,4 @@
-package com.example.promociones
+package com.ssc.promociones
 
 import io.flutter.embedding.android.FlutterActivity
 

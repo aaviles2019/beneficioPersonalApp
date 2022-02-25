@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:promociones/src/models/promociones.dart';
+//import 'package:promociones/src/models/promociones.dart';
 import 'package:promociones/src/providers/app_state.dart';
 import 'package:promociones/widget/Header.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +30,7 @@ class _DetailState extends State<Detail> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
 
-    AppState appState = Provider.of<AppState>(context);
+    //AppState appState = Provider.of<AppState>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -75,7 +75,7 @@ class _DetailState extends State<Detail> with AutomaticKeepAliveClientMixin {
   Widget _titleWidget(BuildContext context) {
     AppState appState = Provider.of<AppState>(context);
     return Container(
-      width: 160,
+      width: 200,
       child: Text(
         "${appState.empresa.nombreEmpresa}",
         style: TextStyle(

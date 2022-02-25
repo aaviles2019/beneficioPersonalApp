@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:promociones/pages/Categories.dart';
+//import 'package:promociones/pages/Categories.dart';
 import 'package:promociones/src/models/Empresa.dart';
 import 'package:promociones/src/models/giros.dart';
 import 'package:promociones/src/models/promociones.dart';

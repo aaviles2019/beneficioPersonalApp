@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:promociones/src/models/Empresa.dart';
 import 'package:promociones/src/models/giros.dart';
 import 'package:promociones/src/providers/app_state.dart';
-import 'package:promociones/src/resource/network_util.dart';
 import 'package:provider/provider.dart';
 // import 'package:promociones/widget/Header.dart';
 
@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin {
   // final NetworkUtil _util = new NetworkUtil();
   List<Giros> listaGiros = [];
+  List<Empresa> listaEmpresa = [];
   @override
   void initState() {
     super.initState();
@@ -24,6 +25,9 @@ class _HomePageState extends State<HomePage>
   // void fetchCategorias() async {
   //   listaGiros = await _util.getGiros();
   // }
+
+   
+
 
   @override
   Widget build(BuildContext context) {
